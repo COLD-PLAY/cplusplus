@@ -84,6 +84,9 @@
     <ClCompile Include="排序算法.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="并查集.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Array.hpp">
