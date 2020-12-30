@@ -140,8 +140,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Array.cpp" />
+    <ClCompile Include="Factory.cpp" />
     <ClCompile Include="Point.hpp" />
     <ClCompile Include="Screen.cpp" />
+    <ClCompile Include="Singleton.cpp" />
+    <ClCompile Include="Stack.cpp" />
     <ClCompile Include="Sum.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="函数调用运算符重载.cpp" />
@@ -162,9 +165,17 @@
     <ClCompile Include="继承.cpp" />
     <ClCompile Include="虚函数.cpp" />
     <ClCompile Include="运算符重载.cpp" />
+    <ClCompile Include="递归2动规.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Array.hpp" />
+    <ClInclude Include="ConcreteFactory.h" />
+    <ClInclude Include="ConcreteProduct.h" />
+    <ClInclude Include="Factory.h" />
+    <ClInclude Include="FactoryMain.h" />
+    <ClInclude Include="Product.h" />
+    <ClInclude Include="Singleton.h" />
+    <ClInclude Include="SingletonMain.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

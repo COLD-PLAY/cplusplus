@@ -16,6 +16,15 @@
     <Filter Include="源文件\C++ Primer Practice">
       <UniqueIdentifier>{0d6cab41-d5ff-4676-b889-87ac0833f9ee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\设计模式">
+      <UniqueIdentifier>{f8d44998-c95e-4de7-9509-572bc70b5412}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\设计模式\单例模式">
+      <UniqueIdentifier>{8d873835-068b-4bc5-89d1-3be57c94dfb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\设计模式\抽象工厂模式">
+      <UniqueIdentifier>{bc437c08-24ce-49be-afaa-9f9a95bdbb95}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="深、浅拷贝.cpp">
@@ -87,10 +96,43 @@
     <ClCompile Include="并查集.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="递归2动规.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Stack.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Singleton.cpp">
+      <Filter>源文件\设计模式\单例模式</Filter>
+    </ClCompile>
+    <ClCompile Include="Factory.cpp">
+      <Filter>源文件\设计模式\抽象工厂模式</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Array.hpp">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>源文件\设计模式\单例模式</Filter>
+    </ClInclude>
+    <ClInclude Include="SingletonMain.h">
+      <Filter>源文件\设计模式\单例模式</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory.h">
+      <Filter>源文件\设计模式\抽象工厂模式</Filter>
+    </ClInclude>
+    <ClInclude Include="Product.h">
+      <Filter>源文件\设计模式\抽象工厂模式</Filter>
+    </ClInclude>
+    <ClInclude Include="ConcreteFactory.h">
+      <Filter>源文件\设计模式\抽象工厂模式</Filter>
+    </ClInclude>
+    <ClInclude Include="ConcreteProduct.h">
+      <Filter>源文件\设计模式\抽象工厂模式</Filter>
+    </ClInclude>
+    <ClInclude Include="FactoryMain.h">
+      <Filter>源文件\设计模式\抽象工厂模式</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
