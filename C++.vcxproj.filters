@@ -90,12 +90,6 @@
     <ClCompile Include="虚函数.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="排序算法.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="并查集.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="递归2动规.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -107,6 +101,18 @@
     </ClCompile>
     <ClCompile Include="Factory.cpp">
       <Filter>源文件\设计模式\抽象工厂模式</Filter>
+    </ClCompile>
+    <ClCompile Include="KMP.hpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="UF.hpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Sort.hpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

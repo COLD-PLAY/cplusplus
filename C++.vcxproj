@@ -141,6 +141,8 @@
   <ItemGroup>
     <ClCompile Include="Array.cpp" />
     <ClCompile Include="Factory.cpp" />
+    <ClCompile Include="KMP.hpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Point.hpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="Singleton.cpp" />
@@ -152,10 +154,10 @@
     <ClCompile Include="多态.cpp" />
     <ClCompile Include="多线程交替输出.cpp" />
     <ClCompile Include="常函数、常对象.cpp" />
-    <ClCompile Include="并查集.cpp" />
+    <ClCompile Include="UF.hpp" />
     <ClCompile Include="我的重载.cpp" />
     <ClCompile Include="拷贝构造函数.cpp" />
-    <ClCompile Include="排序算法.cpp" />
+    <ClCompile Include="Sort.hpp" />
     <ClCompile Include="接口（抽象类）.cpp" />
     <ClCompile Include="智能指针.cpp" />
     <ClCompile Include="枚举类型.cpp" />
