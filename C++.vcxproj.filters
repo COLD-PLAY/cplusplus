@@ -140,5 +140,8 @@
     <ClInclude Include="FactoryMain.h">
       <Filter>源文件\设计模式\抽象工厂模式</Filter>
     </ClInclude>
+    <ClInclude Include="LRU.hpp">
+      <Filter>源文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

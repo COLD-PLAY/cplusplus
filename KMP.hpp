@@ -42,3 +42,35 @@ private:
 	string s, t;
 	vector<int> next;
 };
+
+class KMP_ {
+public:
+	KMP_(string _s, string _p) : 
+		s(_s), p(_p), next(p.size()) {}
+	int match() {
+		int i = 0, j = 0;
+		while (i < int(s.size()) && j < int(p.size())) {
+			if (s[i] == p[j]) i++, j++;
+			else if (j == 0) i++;
+			else j = next[j - 1];
+		}
+		if (j == int(p.size())) return i - j;
+		return -1;
+	}
+	void getNext() {
+		next[0] = 0;
+		int i = 1, j = 0;
+		while (i < p.size()) {
+			if (p[i] == p[j]) {
+				next[i] = j + 1;
+				i++, j++;
+			}
+			else if (j == 0) i++;
+			else j = next[j - 1];
+		}
+	}
+	void showNext() { for (auto& x : next) cout << x << ' '; cout << endl; }
+public:
+	string s, p;
+	vector<int> next; // next[j] 是以p[j]结尾的部分匹配
+};

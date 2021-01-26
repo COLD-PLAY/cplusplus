@@ -1,9 +1,13 @@
 #include "KMP.hpp"
-
 #include "Sort.hpp"
+#include "LRU.hpp"
+#include "LFU.hpp"
+#include "NaiveFunction.hpp"
+#include "Topo.hpp"
+#include "SegmentTree.hpp"
 
 void testKmp() {
-	KMP kmp("liaozhou", "iaoz");
+	KMP_ kmp("aabaaabaaac", "aabaaac");
 	kmp.getNext();
 	kmp.showNext();
 	cout << kmp.match();
@@ -18,8 +22,63 @@ void testSort() {
 	cout << "total time: " << usetime * 1000 << "ms" << endl;
 }
 
-int main() {
-	//testSort();
-	testKmp();
+void testLru() {
+	auto lru = new LRUCache(2);
+	lru->put(1, 1); cout << "null" << endl;
+	lru->put(2, 2); cout << "null" << endl;
+	cout << lru->get(1) << endl;
+	lru->put(3, 3); cout << "null" << endl;
+	cout << lru->get(2) << endl;
+	lru->put(4, 4); cout << "null" << endl;
+	cout << lru->get(1) << endl;
+	cout << lru->get(3) << endl;
+	cout << lru->get(4) << endl;
 }
 
+void testLfu() {
+	auto lru = new LRUCache(2);
+	lru->put(1, 1); cout << "null" << endl;
+	lru->put(2, 2); cout << "null" << endl;
+	cout << lru->get(1) << endl;
+	lru->put(3, 3); cout << "null" << endl;
+	cout << lru->get(2) << endl;
+	lru->put(4, 4); cout << "null" << endl;
+	cout << lru->get(1) << endl;
+	cout << lru->get(3) << endl;
+	cout << lru->get(4) << endl;
+}
+
+void func() {
+	std::cout << "func" << std::endl;
+}
+
+struct functor {
+	void operator()() {
+		std::cout << "functor" << std::endl;
+	}
+};
+
+void testNaiveFunction() {
+	naive_function<void()> f;
+	f = func;
+	f();
+	f = functor();
+	f();
+	f = []() { std::cout << "lambda" << std::endl; };
+	f();
+}
+
+void testSegTree() {
+
+}
+
+int main() {
+	//testSort();
+	//testKmp();
+	//testLru();
+	testLfu();
+	testNaiveFunction();
+	testSegTree();
+
+	return 0;
+}

@@ -175,6 +175,7 @@
     <ClInclude Include="ConcreteProduct.h" />
     <ClInclude Include="Factory.h" />
     <ClInclude Include="FactoryMain.h" />
+    <ClInclude Include="LRU.hpp" />
     <ClInclude Include="Product.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="SingletonMain.h" />

@@ -32,3 +32,41 @@ private:
 	vector<int> sz;
 	int cnt;
 };
+
+class UnionFind {
+public:
+	vector<int> parent;
+	vector<int> size;
+	int n;
+	int setCount;
+
+public:
+	UnionFind(int _n) : n(_n), setCount(_n), parent(_n), size(_n, 1) {
+		iota(parent.begin(), parent.end(), 0);
+	}
+
+	int findSet(int x) {
+		return parent[x] == x ? x : parent[x] = findSet(parent[x]);
+	}
+
+	bool unite(int x, int y) {
+		x = findSet(x);
+		y = findSet(y);
+		if (x == y) {
+			return false;
+		}
+		if (size[x] < size[y]) {
+			swap(x, y);
+		}
+		parent[y] = x;
+		size[x] += size[y];
+		--setCount;
+		return true;
+	}
+
+	bool connected(int x, int y) {
+		x = findSet(x);
+		y = findSet(y);
+		return x == y;
+	}
+};
