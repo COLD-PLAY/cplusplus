@@ -175,10 +175,14 @@
     <ClInclude Include="ConcreteProduct.h" />
     <ClInclude Include="Factory.h" />
     <ClInclude Include="FactoryMain.h" />
+    <ClInclude Include="LFU.hpp" />
     <ClInclude Include="LRU.hpp" />
+    <ClInclude Include="NaiveFunction.hpp" />
     <ClInclude Include="Product.h" />
+    <ClInclude Include="SegmentTree.hpp" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="SingletonMain.h" />
+    <ClInclude Include="Topo.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

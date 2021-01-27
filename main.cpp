@@ -36,16 +36,16 @@ void testLru() {
 }
 
 void testLfu() {
-	auto lru = new LRUCache(2);
-	lru->put(1, 1); cout << "null" << endl;
-	lru->put(2, 2); cout << "null" << endl;
-	cout << lru->get(1) << endl;
-	lru->put(3, 3); cout << "null" << endl;
-	cout << lru->get(2) << endl;
-	lru->put(4, 4); cout << "null" << endl;
-	cout << lru->get(1) << endl;
-	cout << lru->get(3) << endl;
-	cout << lru->get(4) << endl;
+	auto lfu = new LFUCache_(2);
+	lfu->put(1, 1); cout << "null" << endl;
+	lfu->put(2, 2); cout << "null" << endl;
+	cout << lfu->get(1) << endl;
+	lfu->put(3, 3); cout << "null" << endl;
+	cout << lfu->get(2) << endl;
+	lfu->put(4, 4); cout << "null" << endl;
+	cout << lfu->get(1) << endl;
+	cout << lfu->get(3) << endl;
+	cout << lfu->get(4) << endl;
 }
 
 void func() {
@@ -75,8 +75,8 @@ void testSegTree() {
 int main() {
 	//testSort();
 	//testKmp();
-	testLru();
-	//testLfu();
+	//testLru();
+	testLfu();
 	//testNaiveFunction();
 	//testSegTree();
 

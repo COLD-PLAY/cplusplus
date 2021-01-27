@@ -143,5 +143,17 @@
     <ClInclude Include="LRU.hpp">
       <Filter>源文件</Filter>
     </ClInclude>
+    <ClInclude Include="LFU.hpp">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="NaiveFunction.hpp">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Topo.hpp">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SegmentTree.hpp">
+      <Filter>源文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
