@@ -23,7 +23,7 @@ void testSort() {
 }
 
 void testLru() {
-	auto lru = new LRUCache(2);
+	auto lru = new LRUCache___(2);
 	lru->put(1, 1); cout << "null" << endl;
 	lru->put(2, 2); cout << "null" << endl;
 	cout << lru->get(1) << endl;
@@ -75,10 +75,10 @@ void testSegTree() {
 int main() {
 	//testSort();
 	//testKmp();
-	//testLru();
-	testLfu();
-	testNaiveFunction();
-	testSegTree();
+	testLru();
+	//testLfu();
+	//testNaiveFunction();
+	//testSegTree();
 
 	return 0;
 }
