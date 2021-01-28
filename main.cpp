@@ -7,7 +7,7 @@
 #include "SegmentTree.hpp"
 
 void testKmp() {
-	KMP_ kmp("aabaaabaaac", "aabaaac");
+	KMP_ kmp("mississippi", "issip");
 	kmp.getNext();
 	kmp.showNext();
 	cout << kmp.match();
@@ -74,9 +74,9 @@ void testSegTree() {
 
 int main() {
 	//testSort();
-	//testKmp();
+	testKmp();
 	//testLru();
-	testLfu();
+	//testLfu();
 	//testNaiveFunction();
 	//testSegTree();
 

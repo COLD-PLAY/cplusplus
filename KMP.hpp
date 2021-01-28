@@ -49,12 +49,12 @@ public:
 		s(_s), p(_p), next(p.size()) {}
 	int match() {
 		int i = 0, j = 0;
-		while (i < int(s.size()) && j < int(p.size())) {
+		while (i < s.size() && j < p.size()) {
 			if (s[i] == p[j]) i++, j++;
 			else if (j == 0) i++;
 			else j = next[j - 1];
 		}
-		if (j == int(p.size())) return i - j;
+		if (j == p.size()) return i - j;
 		return -1;
 	}
 	void getNext() {
