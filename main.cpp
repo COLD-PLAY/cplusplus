@@ -5,6 +5,7 @@
 #include "NaiveFunction.hpp"
 #include "Topo.hpp"
 #include "SegmentTree.hpp"
+#include "Palindrome.hpp"
 
 void testKmp() {
 	KMP_ kmp("mississippi", "issip");
@@ -72,6 +73,12 @@ void testSegTree() {
 
 }
 
+void testPalindrome() {
+	string s("aababaaaccccaaaabbbbabaaaaaaaaaaccbbaa");
+	Palindrome p(s);
+	std::cout << p.isPalindrome(1, 3);
+}
+
 int main() {
 	//testSort();
 	testKmp();
@@ -79,6 +86,7 @@ int main() {
 	//testLfu();
 	//testNaiveFunction();
 	//testSegTree();
+	testPalindrome();
 
 	return 0;
 }
