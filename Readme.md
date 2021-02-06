@@ -99,3 +99,78 @@ const – 在静态存储区中分配空间，在程序运行过程中内存中�
 4.其他 
 在编译时， 编译器通常不为const常量分配存储空间，而是将它们保存在符号表中，这使得它成为一个编译期间的常量，没有了存储与读内存的操作，使得它的效率也很高。 
 宏替换只作替换，不做计算，不做表达式求解。
+
+- 悬空指针与野指针区别
+悬空指针：当所指向的对象被释放或者收回，但是没有让指针指向NULL；
+野指针：那些未初始化的指针；
+```C++
+{
+   char *dp = NULL;
+   {
+       char c;
+       dp = &c;
+   } 
+  //变量c释放，dp变成空悬指针
+}
+void func()
+{
+    char *dp = (char *)malloc(A_CONST);
+    free(dp);         //dp变成一个空悬指针
+    dp = NULL;        //dp不再是空悬指针
+    /* ... */
+}
+```
+```C++
+int func()
+{
+    char *dp;//野指针，没有初始化
+    static char *sdp;//非野指针，因为静态变量会默认初始化为0
+}
+```
+
+- struct与class的区别?
+本质区别是访问的默认控制：默认的继承访问权限，class是private，struct是public；
+
+- sizeof和strlen的区别?
+1. 功能不同：
+sizeof是操作符，参数为任意类型，主要计算类型占用内存大小。
+strlen()是函数，其函数原型为：extern unsigned int strlen(char \*s);其参数为char*,strlen只能计算以"\0"结尾字符串的长度，计算结果不包括"\0"。
+
+2. 参数不同：
+当将字符数组作为sizeof()的参数时，计算字符数组占用内存大小；当将字符数组作为strlen()函数，字符数组转化为char*。因为sizeof的参数为任意类型，而strlen（）函数参数只能为char*，当参数不是char\*必须转换为char\*。
+
+- 32位，64位系统中，各种常用内置数据类型占用的字节数?
+除*与long 不同其余均相同。
+char 1, short int 2, int 4, unsigned int 4, float 4, double 8, long 4, unsigned long 4, long long 8
+char 1, short int 2, int 4, unsigned int 4, float 4, double 8, long 8, unsigned long 8, long long 8
+unsigned long本质上就是void*指针的表示方式
+
+- virtual, inline, decltype,volatile,static, const关键字的作用?使用场景?
+inline：在c/c++中，为了解决一些频繁调用的小函数大量消耗栈空间（栈内存）的问题，特别的引入了inline修饰符，表示为内联函数。
+```C++
+#include <stdio.h>
+//函数定义为inline即:内联函数
+inline char* dbtest(int a) {
+    return (i % 2 > 0) ? "奇" : "偶";
+} 
+
+int main()
+{
+   int i = 0;
+   for (i=1; i < 100; i++) {
+       printf("i:%d    奇偶性:%s /n", i, dbtest(i));    
+   }
+}//在for循环的每个dbtest(i)的地方替换成了 (i % 2 > 0) ? "奇" : "偶"，避免了频繁调用函数，对栈内存的消耗
+```
+decltype:从表达式中推断出要定义变量的类型，但却不想用表达式的值去初始化变量。还有可能是函数的返回类型为某表达式的的值类型。
+```C++
+int f() {
+	return 0;
+}
+
+void decltypeTest() {
+	decltype(f()) a = 2;
+	cout << a << endl;
+}
+```
+volatile：volatile 关键字是一种类型修饰符，用它声明的类型变量表示可以被某些编译器未知的因素更改，比如：操作系统、硬件或者其它线程等。遇到这个关键字声明的变量，编译器对访问该变量的代码就不再进行优化，从而可以提供对特殊地址的稳定访问。
