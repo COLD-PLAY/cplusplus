@@ -74,3 +74,35 @@ public:
 	string s, p;
 	vector<int> next; // next[j] 是以p[j]结尾的部分匹配
 };
+
+class __KMP {
+public:
+	string s, p;
+	vector<int> next;
+
+public:
+	__KMP(string _s, string _p) : s(_s), p(_p), next(_p.size()) {}
+	int match() {
+		getNext();
+		int i = 0, j = 0;
+		while (i < s.size() && j < p.size()) {
+			if (s[i] == p[j]) ++i, ++j;
+			else if (j == 0) ++i;
+			else j = next[j - 1];
+		}
+		if (j == p.size()) return i - j;
+		return -1;
+	}
+	void getNext() {
+		next[0] = 0;
+		int i = 1, j = 0;
+		while (i < p.size()) {
+			if (p[i] == p[j]) {
+				next[i] = j + 1;
+				++i, ++j;
+			}
+			else if (j == 0) ++i;
+			else j = next[j - 1];
+		}
+	}
+};
