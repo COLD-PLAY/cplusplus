@@ -79,14 +79,34 @@ void testPalindrome() {
 	std::cout << p.isPalindrome(1, 3);
 }
 
+void testVirtualInherit() {
+	class A {
+	private:
+		int a;
+	public:
+		A(int _a) : a(_a) {}
+		virtual void f() {}
+		virtual void g() {}
+		virtual void h() {}
+	};
+
+	class B : public A {
+	private:
+		int b;
+	public:
+		B(int _a, int _b) : b(_b), A(_a) {}
+	};
+}
+
 int main() {
 	//testSort();
-	testKmp();
+	//testKmp();
 	//testLru();
 	//testLfu();
 	//testNaiveFunction();
 	//testSegTree();
-	testPalindrome();
+	//testPalindrome();
+	testVirtualInherit();
 
 	return 0;
 }

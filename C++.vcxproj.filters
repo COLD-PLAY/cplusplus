@@ -155,5 +155,11 @@
     <ClInclude Include="SegmentTree.hpp">
       <Filter>源文件</Filter>
     </ClInclude>
+    <ClInclude Include="Palindrome.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PrimeFactorize.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
