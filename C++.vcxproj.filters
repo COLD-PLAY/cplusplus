@@ -164,7 +164,16 @@
     <ClInclude Include="Dijkstra.hpp">
       <Filter>源文件</Filter>
     </ClInclude>
-    <ClInclude Include="SkipList.hpp">
+    <ClInclude Include="Skiplist.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="threadpool.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="mythreadpool.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="mythread.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
