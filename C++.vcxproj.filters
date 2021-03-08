@@ -161,5 +161,11 @@
     <ClInclude Include="PrimeFactorize.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Dijkstra.hpp">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SkipList.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
