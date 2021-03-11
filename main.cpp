@@ -9,6 +9,8 @@
 #include "threadpool.hpp"
 #include "mythreadpool.hpp"
 #include "mythread.hpp"
+#include "Skiplist.hpp"
+#include "AVLTree.hpp"
 
 #include <string>
 
@@ -220,6 +222,43 @@ void threadtest() {
 }
 }
 
+namespace skiplisttest {
+void skiplisttest() {
+	Skiplist_ sk;
+	sk.add(1);
+	sk.add(2);
+	sk.add(3);
+	cout << sk.search(0) << endl;
+	//sk.add(4);
+}
+}
+
+namespace avltreetest {
+void testavltree()
+{
+	AVLTree<int> avl;
+	for (int i = 0; i < 50; i++)
+		avl.insert(i);
+	cout << "树高：" << avl.height() << endl;
+
+	cout << "中序遍历:" << endl;
+	avl.inOrder();
+	cout << endl;
+
+	cout << "删除元素10" << endl;
+	avl.remove(10);
+
+	auto b = avl.searchIterator(10);
+
+	if (b != nullptr)
+		cout << b->key;
+	else
+		cout << "无此元素" << endl;
+	
+	b = avl.searchIterator(15);
+	if (b) cout << b->key << endl;
+}
+}
 
 int main() {
 	//sorttest::testSort();
@@ -232,6 +271,8 @@ int main() {
 	//virtualinherittest::testVirtualInherit();
 	//threadpooltest::main();
 	//threadtest::threadtest();
+	//skiplisttest::skiplisttest();
+	avltreetest::testavltree();
 
 	return 0;
 }
