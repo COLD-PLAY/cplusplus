@@ -12,6 +12,7 @@
 #include "Skiplist.hpp"
 #include "AVLTree.hpp"
 
+#include <map>
 #include <string>
 
 namespace kmptest {
@@ -260,6 +261,198 @@ void testavltree()
 }
 }
 
+//const int a = 5;
+
+namespace consttest { // 全局const 变量会被存到.rodata 只读空间（但是局部变量放到栈上的，拿到地址就可以随便改
+void testconst() {
+	const int a = 5;
+	int* p = (int*)&a;
+	cout << &a << ' ' << p << endl;
+	*p = 10;
+	cout << a << endl;
+}
+}
+
+// pol: Principle of locality 局部性原理
+// 没有对数组进行排序 会消耗18.572s
+// 对数组进行排序后 只消耗6.754s
+namespace poltest {
+void testpol() {
+	// Generate data
+	const unsigned arraySize = 32768;
+	int data[arraySize];
+
+	for (unsigned c = 0; c < arraySize; ++c)
+		data[c] = std::rand() % 256;
+
+	// !!! With this, the next loop runs faster.
+	//std::sort(data, data + arraySize);
+
+	// Test
+	clock_t start = clock();
+	long long sum = 0;
+
+	for (unsigned i = 0; i < 100000; ++i)
+	{
+		// Primary loop
+		for (unsigned c = 0; c < arraySize; ++c)
+		{
+			if (data[c] >= 128)
+				sum += data[c];
+		}
+	}
+
+	double elapsedTime = static_cast<double>(clock() - start) / CLOCKS_PER_SEC;
+
+	std::cout << elapsedTime << std::endl;
+	std::cout << "sum = " << sum << std::endl;
+}
+}
+
+namespace endiantest {
+void testendian() {
+	int a = 0x12345678;
+	// 1. 直接指针
+	char* p = (char*)&a;
+	if (*p == 0x78)
+		cout << "little endian" << endl;
+	else
+		cout << "big endian" << endl;
+
+	// 用一下联合体
+	union Un {
+		char c;
+		int i;
+	};
+
+	Un un;
+	un.i = 0x12345678;
+	if (un.c == 0x78)
+		cout << "little endian" << endl;
+	else
+		cout << "big endian" << endl;
+}
+}
+
+namespace encrypttest {
+void testencrypt() {
+	string str, pass;
+	string str_encrypted, str_decrypted;
+	bool flag = false;
+	cout << "输入加密/解密标志位：（1表示加密，0表示解密）"; cin >> flag;
+	cout << "输入待加/解密字符串："; cin >> str;
+	cout << "输入密钥字符串："; cin >> pass;
+	int n = pass.size();
+	str_encrypted = str;
+	if (flag) { // 加密
+		for (int i = 0; i < str.size(); ++i)
+			str_encrypted[i] = str[i] + pass[i % n];
+		cout << "加密后字符串：" << str_encrypted << endl;
+	}
+	else { // 解密
+		try {
+			for (int i = 0; i < str.size(); ++i)
+				str_decrypted[i] = str[i] - pass[i % n];
+			cout << "解密后字符串：" << str_decrypted << endl;
+		}
+		catch (...) {
+			cout << "密钥错误！" << endl;
+		}
+	}
+}
+}
+
+namespace addresstest {
+void testaddress() {
+	int t[3][2] = { {1,2},{3,4},{5,6} }, * pt[3], k;
+	for (k = 0; k < 3; ++k)
+		pt[k] = t[k];
+	cout << *(&pt[2]) << endl;
+}
+}
+
+namespace reversepolishnotationtest {
+int testreversepolishnotation(char str[]) {
+	int stack[10005];
+	int top = 0;
+	int len = strlen(str);
+	for (int i = 0; i < len; ++i) {
+		if (!isdigit(str[i])) {
+			if (str[i] == ',')
+				continue;
+			int a = stack[--top];
+			int b = stack[--top];
+			int c;
+			switch (str[i])
+			{
+			case '+':
+				c = b + a;
+				break;
+			case '-':
+				c = b - a;
+				break;
+			case '*':
+				c = b * a;
+				break;
+			case '/':
+				c = b / a;
+				break;
+			default:
+				break;
+			}
+			stack[top++] = c;
+		}
+		int tmp = 0;
+		bool flag = false;
+		while (i < len && isdigit(str[i])) {
+			flag = true;
+			tmp *= 10, tmp += str[i] - '0';
+			++i;
+		}
+		if (flag)
+			stack[top++] = tmp; // 压栈
+	}
+	printf("%s = %d", str, stack[0]);
+	return stack[0];
+}
+}
+
+namespace fututest {
+void divide() { // 没考虑到负数情况
+	int a, b;
+	cin >> a >> b;
+	if (a % b == 0) {
+		cout << a / b << endl;
+		return;
+	}
+	int d = a / b;
+	a %= b;
+	unordered_map<int, bool> vis;
+	vector<int> nums;
+	while (a && !vis.count(a)) {
+		vis[a] = true;
+		a *= 10;
+		nums.push_back(a / b);
+		a %= b;
+	}
+	cout << d << '.';
+	if (a == 0) {
+		for (auto& x : nums)
+			cout << x;
+	}
+	else {
+		a = (a * 10) / b;
+		bool flag = false;
+		for (auto& x : nums) {
+			if (x != a) cout << x;
+			else cout << '(' << x;
+		}
+		cout << ')';
+	}
+	cout << endl;
+}
+}
+
 int main() {
 	//sorttest::testSort();
 	//kmptest::testKmp();
@@ -272,7 +465,15 @@ int main() {
 	//threadpooltest::main();
 	//threadtest::threadtest();
 	//skiplisttest::skiplisttest();
-	avltreetest::testavltree();
+	//avltreetest::testavltree();
+	//consttest::testconst();
+	//poltest::testpol();
+	//endiantest::testendian();
+	//encrypttest::testencrypt();
+	//addresstest::testaddress();
+	//char str[] = "2,3,*";
+	//reversepolishnotationtest::testreversepolishnotation(str);
+	//fututest::divide();
 
 	return 0;
 }

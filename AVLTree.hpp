@@ -144,17 +144,17 @@ private:
 		if (!node)
 			return nullptr;
 		if (key == node->key) { // 找到要删除的节点
-			// 左子树比右子树高，从左子树上选择最大的节点进行替换
 			if (node->lchild && node->rchild) {
+				// 左子树比右子树高，从左子树上选择最大的节点进行替换
 				if (_height(node->lchild) > _height(node->rchild)) {
 					auto pre = _maximum(node->lchild);
 					node->key = pre->key;
 					node->lchild = _remove(node->lchild, pre->key); // 递归删除左子树的最大节点
 				}
 				else {
-					auto pre = _maximum(node->rchild);
+					auto pre = _minimum(node->rchild);
 					node->key = pre->key;
-					node->rchild = _remove(node->rchild, pre->key); // 递归删除右子树的最大节点
+					node->rchild = _remove(node->rchild, pre->key); // 递归删除右子树的最小节点
 				}
 			}
 			else {
