@@ -5,6 +5,7 @@
 #include <cstring>
 
 #include <vector>
+#include <queue>
 
 struct Edge {
 	int f_, t_, w_;
@@ -34,6 +35,7 @@ public:
 			que.push(u);
 		while (!que.empty()) {
 			int u = que.front();
+			topo_[i++] = u;
 			que.pop();
 			for (int v = 0; v < n_; ++v) if (graph_[u][v]) {
 				--indegree_[v];
@@ -94,6 +96,7 @@ int findLongestPath(vector<Edge>& edges, int n) {
 		}
 		ans = max(ans, dp[u]);
 	}
+	return ans;
 }
 
 

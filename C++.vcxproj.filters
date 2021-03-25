@@ -176,5 +176,11 @@
     <ClInclude Include="mythread.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="AVLTree.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Radix_Trie.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -184,6 +184,7 @@
     <ClInclude Include="Palindrome.hpp" />
     <ClInclude Include="PrimeFactorize.hpp" />
     <ClInclude Include="Product.h" />
+    <ClInclude Include="Radix_Trie.hpp" />
     <ClInclude Include="SegmentTree.hpp" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="SingletonMain.h" />

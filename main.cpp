@@ -11,6 +11,7 @@
 #include "mythread.hpp"
 #include "Skiplist.hpp"
 #include "AVLTree.hpp"
+#include "Radix_Trie.hpp"
 
 #include <map>
 #include <string>
@@ -453,6 +454,42 @@ void divide() { // 没考虑到负数情况
 }
 }
 
+namespace radixtrietest {
+void testradixtrie() {
+	Trie trie;
+	cout << endl << "========================= trie ========================" << endl;
+	trie.insert("java", 1234);
+	trie.insert("javascript", 1354);
+	trie.insert("just", 5723);
+	trie.insert("liaozhou", 5164);
+	trie.insert("liaofan", 6592);
+
+	cout << "jav: " << trie.search("jav") << endl;
+	cout << "java: " << trie.search("java") << endl;
+	cout << "javascript: " << trie.search("javascript") << endl;
+
+	cout << endl;
+
+	trie.foreach([](string key, int val) { cout << key << ": " << val << endl; });
+
+	cout << endl << "====================== radix tree ====================" << endl;
+	RadixTree radixtree;
+	radixtree.insert("java", 1234);
+	radixtree.insert("javascript", 1354);
+	radixtree.insert("just", 5723);
+	radixtree.insert("liaozhou", 5164);
+	radixtree.insert("liaofan", 6592);
+
+	cout << "jav: " << radixtree.search("jav") << endl;
+	cout << "java: " << radixtree.search("java") << endl;
+	cout << "javascript: " << radixtree.search("javascript") << endl;
+
+	cout << endl;
+
+	radixtree.foreach([](string key, int val) { cout << key << ": " << val << endl; });
+}
+}
+
 int main() {
 	//sorttest::testSort();
 	//kmptest::testKmp();
@@ -474,6 +511,7 @@ int main() {
 	//char str[] = "2,3,*";
 	//reversepolishnotationtest::testreversepolishnotation(str);
 	//fututest::divide();
+	radixtrietest::testradixtrie();
 
 	return 0;
 }
