@@ -172,6 +172,7 @@
   <ItemGroup>
     <ClInclude Include="Array.hpp" />
     <ClInclude Include="AVLTree.hpp" />
+    <ClInclude Include="BIT.hpp" />
     <ClInclude Include="ConcreteFactory.h" />
     <ClInclude Include="ConcreteProduct.h" />
     <ClInclude Include="Dijkstra.hpp" />

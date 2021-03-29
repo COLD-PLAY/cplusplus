@@ -12,6 +12,7 @@
 #include "Skiplist.hpp"
 #include "AVLTree.hpp"
 #include "Radix_Trie.hpp"
+#include "BIT.hpp"
 
 #include <map>
 #include <string>
@@ -490,6 +491,34 @@ void testradixtrie() {
 }
 }
 
+namespace bittest {
+void testbit() {
+	int arr[] = { 5,2,3,4,8,19,3,4,12,7,1 };
+	BIT bit(11);
+	BIT_MAX bit_max(11);
+	BIT_OR bit_or(11);
+	for (int i = 0; i < 11; ++i) {
+		bit.update(i + 1, arr[i]); // 注意下标从1开始的
+		bit_max.update(i + 1, arr[i]);
+		bit_or.update(i + 1, arr[i]);
+	}
+	cout << endl << "=============bit==============" << endl;
+	cout << bit.query(1, 3) << endl;
+	cout << bit.query(5, 7) << endl;
+	cout << bit.query(9, 11) << endl;
+
+	cout << endl << "=============bit_max==============" << endl;
+	cout << bit_max.query(1, 3) << endl;
+	cout << bit_max.query(5, 7) << endl;
+	cout << bit_max.query(9, 11) << endl;
+
+	cout << endl << "=============bit_or==============" << endl;
+	cout << bit_or.query(1, 3) << endl;
+	cout << bit_or.query(5, 7) << endl;
+	cout << bit_or.query(9, 11) << endl;
+}
+}
+
 int main() {
 	//sorttest::testSort();
 	//kmptest::testKmp();
@@ -511,7 +540,8 @@ int main() {
 	//char str[] = "2,3,*";
 	//reversepolishnotationtest::testreversepolishnotation(str);
 	//fututest::divide();
-	radixtrietest::testradixtrie();
+	//radixtrietest::testradixtrie();
+	bittest::testbit();
 
 	return 0;
 }
