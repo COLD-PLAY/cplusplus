@@ -13,6 +13,8 @@
 #include "AVLTree.hpp"
 #include "Radix_Trie.hpp"
 #include "BIT.hpp"
+#include "MerkleTree.hpp"
+#include "Bloom.hpp"
 
 #include <map>
 #include <string>
@@ -519,6 +521,35 @@ void testbit() {
 }
 }
 
+namespace merkletreetest {
+void testmerkletree() {
+	vector<uint> nums = { 11,22,33,44,55,67,77,88,99,1010,1111,1212 };
+	MerkleTree mt(nums);
+	mt.insert(1313);
+	mt.insert(1414);
+	mt.insert(1515);
+	mt.insert(1616);
+	mt.insert(1717);
+	mt.printMerkleTree();
+}
+}
+
+namespace bloomtest {
+void testbloom() {
+	Bloom bloom(8, "ITHERUnder");
+	bloom.insert("hello");
+	bloom.insert("world");
+	bloom.insert("liaozhou");
+	bloom.insert("sunxun");
+
+	bloom.search("liaozho");
+	bloom.search("sunxu");
+
+	bloom.search("liaozhou");
+	bloom.search("sunxun");
+}
+}
+
 int main() {
 	//sorttest::testSort();
 	//kmptest::testKmp();
@@ -541,7 +572,9 @@ int main() {
 	//reversepolishnotationtest::testreversepolishnotation(str);
 	//fututest::divide();
 	//radixtrietest::testradixtrie();
-	bittest::testbit();
+	//bittest::testbit();
+	//merkletreetest::testmerkletree();
+	bloomtest::testbloom();
 
 	return 0;
 }

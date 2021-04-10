@@ -173,6 +173,7 @@
     <ClInclude Include="Array.hpp" />
     <ClInclude Include="AVLTree.hpp" />
     <ClInclude Include="BIT.hpp" />
+    <ClInclude Include="Bloom.hpp" />
     <ClInclude Include="ConcreteFactory.h" />
     <ClInclude Include="ConcreteProduct.h" />
     <ClInclude Include="Dijkstra.hpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="FactoryMain.h" />
     <ClInclude Include="LFU.hpp" />
     <ClInclude Include="LRU.hpp" />
+    <ClInclude Include="MerkleTree.hpp" />
     <ClInclude Include="mythreadpool.hpp" />
     <ClInclude Include="NaiveFunction.hpp" />
     <ClInclude Include="Palindrome.hpp" />

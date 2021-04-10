@@ -185,5 +185,11 @@
     <ClInclude Include="BIT.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="MerkleTree.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Bloom.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
