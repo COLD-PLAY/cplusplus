@@ -523,14 +523,23 @@ void testbit() {
 
 namespace merkletreetest {
 void testmerkletree() {
-	vector<uint> nums = { 11,22,33,44,55,67,77,88,99,1010,1111,1212 };
+	vector<uint> nums = { 11,22,33,44,55,66,77,88,99,1010,1111,1212 };
 	MerkleTree mt(nums);
-	mt.insert(1313);
-	mt.insert(1414);
-	mt.insert(1515);
-	mt.insert(1616);
-	mt.insert(1717);
+	//mt.insert(1313);
+	//mt.insert(1414);
+	//mt.insert(1515);
+	//mt.insert(1616);
+	//mt.insert(1717);
 	mt.printMerkleTree();
+
+	vector<uint> nums_ = { 11,22,33,44,55,67,77,88,99,1010,1111,1232 };
+	MerkleTree mt_(nums_);
+	mt_.printMerkleTree();
+
+	auto diff = mt.findDiff(mt_);
+	cout << "diff node: " << endl;
+	for (auto& x : diff) cout << x->data << ' ';
+	cout << endl;
 }
 }
 

@@ -127,8 +127,33 @@ public:
 
 	void printMerkleTree() { cout << endl; _inOrder(_root, 0); cout << endl; }
 
+	bool operator ==(const MerkleTree& rhs) {
+		return _root->data == rhs._root->data;
+	}
+
+	vector<Node*> findDiff(const MerkleTree& rhs) {
+		vector<Node*> diff;
+		_findDiff(diff, _root, rhs._root);
+		return diff;
+	}
+
 private:
 	Node* _root;
+
+	void _findDiff(vector<Node*>& diff, Node* p, Node* q) {
+		if (!p && !q) return;
+		if (!p || !q) {
+			if (p) diff.push_back(p);
+			return;
+		}
+		if (p->data == q->data) return;
+		if (_isLeaf(p) && _isLeaf(q))
+			if (p->data != q->data) diff.push_back(p);
+		_findDiff(diff, p->left, q->left);
+		_findDiff(diff, p->right, q->right);
+	}
+
+	bool _isLeaf(Node* p) { return p && !p->left && !p->right; }
 
 	void _deleteMerkleTree() { _deleteMerkleTree(_root); }
 
@@ -185,7 +210,7 @@ private:
 		return hash & 0x7fffffff;
 	}
 
-	uint _hash(int x) {
+	uint _hash(uint x) {
 		uint cal = 11, hash = 0;
 		hash = x * cal;
 		return hash & 0x7fffffff;
